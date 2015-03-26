@@ -2,6 +2,7 @@
 ### Meteor template
 .meteor/local
 .meteor/meteorite
+packages
 
 .idea
 .DS_Store
