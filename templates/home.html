@@ -1,0 +1,17 @@
+<template name="home">
+    <div class="section section-primary">
+        <div class="container">
+            <div class="mobile-padding">
+                <h1>Status</h1>
+                <h3>Everything is up and running.</h3>
+            </div>
+            <div class="spacer"></div>
+            {{> serviceList}}
+            {{#if currentUser}}
+
+            {{else}}
+
+            {{/if}}
+        </div>
+    </div>
+</template>

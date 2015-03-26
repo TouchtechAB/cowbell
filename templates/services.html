@@ -1,0 +1,59 @@
+<template name="serviceList">
+    <ul class="service-list">
+        {{#each services}}
+            {{> serviceListEntry }}
+        {{/each}}
+    </ul>
+    {{#if canInsertService}}
+        {{> serviceInsertForm}}
+    {{/if}}
+</template>
+
+<template name="serviceListEntry">
+    <li class="list-entry">
+        <a href="{{pathFor 'service'}}">
+            <div class="service-list-entry">
+                <div class="indicators">
+                    <span class="indicator {{status}}"></span>
+                </div>
+                <div class="title">{{title}}</div>
+            </div>
+        </a>
+    </li>
+</template>
+
+<template name="service">
+    <div class="service master-section section-primary">
+        <div class="container mobile-padding">
+            <h1>{{service.title}}</h1>
+            <h3>{{capitalize service.status}}</h3>
+        </div>
+        <div class="container">
+            {{> testList}}
+        </div>
+        <div class="container">
+            {{#if canUpdateService}}
+                {{> serviceUpdateForm}}
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="serviceInsertForm">
+    {{#autoForm collection="Services" id="serviceInsertForm" type="insert"}}
+        <fieldset>
+            {{> afQuickField name='title'}}
+        </fieldset>
+        <button id="service-insert-form-dismiss-button">Cancel</button>
+        <button type="submit">Add Service</button>
+    {{/autoForm}}
+</template>
+
+<template name="serviceUpdateForm">
+    {{#autoForm collection="Services" id="serviceUpdateForm" type="update" doc=service}}
+        <fieldset>
+            {{> afQuickField name='title'}}
+        </fieldset>
+        <button type="submit">Update Service</button>
+    {{/autoForm}}
+</template>

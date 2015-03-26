@@ -1,0 +1,52 @@
+button,
+input[type="submit"] {
+  @extend %button;
+  @include appearance(none);
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: $base-font-size * 0.9;
+  font-weight: 600;
+  border-radius: 0;
+}
+
+.btn-wide {
+  width: 100%;
+  height: 42px;
+}
+
+.btn-tiny {
+  font-size: $base-font-size * 0.6;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 6px;
+}
+
+.btn-round {
+  height: 84px;
+  width: 84px;
+  border-radius: 42px;
+}
+
+.btn-round-small {
+  height: 42px;
+  width: 42px;
+  border-radius: 21px;
+}
+
+.btn-icon {
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: block;
+}
+
+.btn-label {
+  text-align: center;
+  font-size: 10px;
+  margin-top: -10px;
+  opacity: 0.4;
+}

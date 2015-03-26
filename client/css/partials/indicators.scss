@@ -1,0 +1,35 @@
+@import "../bourbon/bourbon";
+@import "../base/base";
+@import "../neat/neat";
+
+.indicators {
+  $indicator-background: $medium-gray;
+  $indicator-error-color: $red;
+  $indicator-notice-color: $yellow;
+  $indicator-success-color: $green;
+
+  display: inline-block;
+  padding-left: em(20);
+  padding-right: em(20);
+
+  .indicator {
+    $indicator-size: em(12);
+    background: $indicator-background;
+    display: inline-block;
+    border-radius: $indicator-size / 2;
+    width: $indicator-size;
+    height: $indicator-size;
+
+    &.error, &.inactive, &.false {
+      background: $indicator-error-color;
+    }
+
+    &.notice, &.warning, &.idle {
+      background: $indicator-notice-color;
+    }
+
+    &.success, &.normal, &.active, &.true {
+      background: $indicator-success-color;
+    }
+  }
+}

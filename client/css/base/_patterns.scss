@@ -1,0 +1,9 @@
+@mixin diagonal-stripe-pattern($color-1, $color-2, $ratio, $angle) {
+  $ratio: percentage($ratio / 2);
+  @include linear-gradient($angle,
+          $color-1 (50% - $ratio),
+          $color-2 (50% - $ratio),
+          $color-2 50%, $color-1 50%,
+          $color-1 (100% - $ratio),
+          $color-2 (100% - $ratio));
+}

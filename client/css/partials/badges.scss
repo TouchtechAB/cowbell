@@ -1,0 +1,49 @@
+@import "../bourbon/bourbon";
+@import "../base/base";
+@import "../neat/neat";
+
+.badges {
+  $badge-background: $medium-gray;
+  $badge-dark-color: $dark-gray;
+  $badge-error-color: $red;
+  $badge-notice-color: $yellow;
+  $badge-success-color: $green;
+  $badge-font-color: #fff;
+  $badge-font-size: $base-font-size * .85;
+
+  display: inline-block;
+  margin-bottom: $base-line-height;
+  margin-left: 0.15em;
+  margin-right: 0.15em;
+
+  .badge {
+    display: inline-block;
+    background: $badge-background;
+    border-radius: 2em;
+    color: $badge-font-color;
+    font-size: $badge-font-size;
+    font-weight: 600;
+    line-height: 1.85em;
+    padding: 0 0.6em;
+    text-align: center;
+
+    &.dark {
+      background: $badge-dark-color;
+    }
+
+    &.error {
+      background: $badge-error-color;
+      color: darken($badge-error-color, 60);
+    }
+
+    &.notice {
+      background: $badge-notice-color;
+      color: darken($badge-notice-color, 60);
+    }
+
+    &.success {
+      background: $badge-success-color;
+      color: darken($badge-success-color, 60);
+    }
+  }
+}

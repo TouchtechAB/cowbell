@@ -1,0 +1,81 @@
+<template name="users">
+    <div class="section section-primary">
+        <div class="container">
+            <div class=" mobile-padding">
+                <h1>Users</h1>
+                <h3>Say hello to the team.</h3>
+            </div>
+            <div class="spacer"></div>
+            {{> userList}}
+            {{#if currentUser}}
+            {{else}}
+                <div class="section">{{> atForm state='signIn'}}</div>
+            {{/if}}
+            {{#if canInsertUser}}
+                <div class="section">{{> atForm state='signUp'}}</div>
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="userList">
+    <ul id="user-list">
+      {{#each users}}
+        {{> userListEntry }}
+      {{/each}}
+    </ul>
+</template>
+
+<template name="userListEntry">
+    <li class="list-entry">
+        <div class="user-list-entry">
+            <a href="{{pathFor 'user'}}">
+                <div class="user-avatar">
+                    {{> avatar userId=this size="small" shape="circle"}}
+                </div>
+                <span class="title">{{profile.firstName}} {{profile.lastName}}</span>
+                <span class="statistics">{{statistics.duration}}</span>
+            </a>
+        </div>
+    </li>
+</template>
+
+<template name="user">
+    <div class="section section-primary">
+        <div class="container mobile-padding">
+            <div class="spacer"></div>
+            <h1>{{user.profile.firstName}} {{user.profile.lastName}}</h1>
+            <h3>{{user.profile.organization}}</h3>
+            <div class="spacer"></div>
+            {{> itemList }}
+            <div class="spacer"></div>
+            {{> commentList }}
+            <div class="spacer"></div>
+          {{#if canUpdateUser user._id}}
+            {{>userUpdateForm}}
+          {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="userInsertForm">
+  {{#autoForm collection="Meteor.users" id="userInsertForm" type="insert"}}
+      <fieldset>
+          {{> afQuickField name='profile.firstName'}}
+          {{> afQuickField name='profile.lastName'}}
+          {{> afQuickField name='profile.organization'}}
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Add</button>
+  {{/autoForm}}
+</template>
+
+<template name="userUpdateForm">
+  {{#autoForm collection="Meteor.users" id="userUpdateForm" type="update" doc=user}}
+      <fieldset>
+          {{> afQuickField name='profile.firstName'}}
+          {{> afQuickField name='profile.lastName'}}
+          {{> afQuickField name='profile.organization'}}
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Update</button>
+  {{/autoForm}}
+</template>

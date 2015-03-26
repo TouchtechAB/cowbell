@@ -1,0 +1,90 @@
+<template name="testList">
+    <ul class="test-list">
+        {{#each tests}}
+            {{> testListEntry }}
+        {{/each}}
+    </ul>
+    {{#if canInsertTests}}
+        {{> testInsertForm}}
+    {{/if}}
+</template>
+
+<template name="testListEntry">
+    <li class="list-entry">
+        <a href="{{pathFor 'test'}}">
+            <div class="test-list-entry">
+                <div class="indicators">
+                    <span class="indicator {{stringify isPassing}}"></span>
+                </div>
+                <div class="title">{{title}}</div>
+                <div class="info">{{lastRunAt}}</div>
+                <div class="info">{{interval}}</div>
+            </div>
+        </a>
+    </li>
+</template>
+
+<template name="test">
+    <div class="test master-section section-primary">
+        <div class="container mobile-padding">
+            <h1>{{test.title}}</h1>
+            <h3>{{test.type}}</h3>
+            <div>
+                {{#if test.isPassing}}
+                    Passing
+                {{else}}
+                    Failing
+                {{/if}}
+            </div>
+            <div>last run: {{test.lastRunAt}}</div>
+            <div>next run: {{test.nextRunAt}}</div>
+            <div>interval: {{test.interval}}</div>
+            <div>{{file.name}}</div>
+            <button id="test-run-button">Run test</button>
+        </div>
+        <div class="container">
+        {{#if canUpdateTest test}}
+            {{> testUpdateForm}}
+            {{> testFileUploadForm}}
+        {{/if}}
+        {{#if canRemoveTest test}}
+            <button id="test-remove-button">Remove Test</button>
+        {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="testInsertForm">
+    {{#autoForm collection="Tests" id="testInsertForm" type="insert"}}
+        <fieldset>
+            {{> afQuickField name="title"}}
+            {{> afQuickField name="serviceId" value=service._id type="hidden" label=false}}
+            {{> afQuickField name="runner" options=testRunnerOptions}}
+            {{> afQuickField name="interval" options=testIntervalOptions}}
+            {{> afQuickField name="isCritical"}}
+        </fieldset>
+        <button id="test-insert-form-dismiss-button">Cancel</button>
+        <button type="submit">Add test</button>
+    {{/autoForm}}
+</template>
+
+<template name="testUpdateForm">
+    {{#autoForm collection="Tests" id="testUpdateForm" type="update" doc=test}}
+        <fieldset>
+            {{> afQuickField name="title"}}
+            {{> afQuickField name="runner" options=testRunnerOptions}}
+            {{> afQuickField name="interval" options=testIntervalOptions}}
+            {{> afQuickField name="isCritical"}}
+        </fieldset>
+        <button type="submit">Update test</button>
+    {{/autoForm}}
+</template>
+
+<template name="testFileUploadForm">
+    <form class="fileUploadForm">
+        <button class="fileUploadButton">
+            Upload test file
+            <input type="file" class="fileInput upload" required/>
+        </button>
+    </form>
+</template>
