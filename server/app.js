@@ -7,15 +7,15 @@ Meteor.startup(function() {
     });
 
     ensureTests();
+    console.log(TestFilesNew);
 });
 
-ensureTests = function() {
+function ensureTests() {
 
     var tests = Tests.find({ nextRunAt: { $lt: new Date }});
-
     tests.forEach(function(test){
         runTest(test._id);
     });
 
     Meteor.setTimeout(ensureTests, 10000);
-};
+}

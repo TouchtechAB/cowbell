@@ -16,7 +16,7 @@ Template.registerHelper('canRemoveTest', function(test) {
 
 Template.registerHelper('testRunnerOptions', function() {
     return [
-        {label: "CasperJS", value: "casperjs test"},
+        {label: "CasperJS", value: "casperjso test"},
         {label: "Mocha", value: "mocha"}
     ];
 });
