@@ -1,3 +1,4 @@
+fs = Meteor.npmRequire('fs');
 exec = Meteor.npmRequire('child_process').exec;
 
 Meteor.methods({

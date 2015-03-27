@@ -1,5 +1,3 @@
-fs = Meteor.npmRequire('fs');
-
 Meteor.startup(function() {
 
     Meteor.Mandrill.config({
@@ -41,13 +39,24 @@ function updateRunners() {
 function updateScripts() {
 
     var hashFiles = Meteor.npmRequire('hash-files');
+    var readdir = Meteor.npmRequire('recursive-readdir');
     var runners = Runners.find();
 
     runners.forEach(function(runner) {
 
         try {
             var dir = './assets/app/tests/' + runner.slug;
-            fs.readdirSync(dir).forEach(function(file) {
+
+            recursive('some/path', function (err, files) {
+                // Files is an array of filename
+                console.log(files);
+            });
+
+            var files = Async.runSync(function(done) {
+                readdir(dir, done);
+            });
+
+            files.forEach(function(file) {
 
                 var path = dir + "/" + file;
                 var hash = hashFiles.sync({ files: [path] });

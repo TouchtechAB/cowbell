@@ -1,3 +1,4 @@
 {
-  "hash-files": "1.0.0"
+  "hash-files": "1.0.0",
+  "recursive-readdir": "1.2.1"
 }
