@@ -47,27 +47,27 @@ function updateScripts() {
         try {
             var dir = './assets/app/tests/' + runner.slug;
 
-            recursive('some/path', function (err, files) {
-                // Files is an array of filename
-                console.log(files);
-            });
-
             var files = Async.runSync(function(done) {
                 readdir(dir, done);
             });
 
-            files.forEach(function(file) {
+            if(files.error) {
+                console.log(files.error);
+            }
+            else if(files.result && files.result.length) {
+                files.result.forEach(function(file) {
 
-                var path = dir + "/" + file;
-                var hash = hashFiles.sync({ files: [path] });
+                    var path = dir + "/" + file;
+                    var hash = hashFiles.sync({ files: [path] });
 
-                Scripts.upsert({ hash: hash }, { $set: {
-                    runnerId: runner._id,
-                    file: file,
-                    path: path,
-                    hash: hash
-                }});
-            });
+                    Scripts.upsert({ hash: hash, path: path }, { $set: {
+                        runnerId: runner._id,
+                        file: file,
+                        path: path,
+                        hash: hash
+                    }});
+                });
+            }
         }
         catch(err) {
             console.log(err);
