@@ -14,11 +14,19 @@ Template.registerHelper('canRemoveTest', function(test) {
     return canRemoveTest(Meteor.userId(), test);
 });
 
-Template.registerHelper('testRunnerOptions', function() {
-    return [
-        {label: "CasperJS", value: "casperjso test"},
-        {label: "Mocha", value: "mocha"}
-    ];
+Template.registerHelper('testScriptOptions', function() {
+
+    var options = [];
+
+    Scripts.find().forEach(function(script) {
+        var runner = Runners.findOne({ _id: script.runnerId });
+        options.push({
+            label: runner.title + " - " + script.file,
+            value: script._id
+        });
+    });
+
+    return options;
 });
 
 Template.registerHelper('testIntervalOptions', function() {

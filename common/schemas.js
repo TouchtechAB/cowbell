@@ -12,10 +12,9 @@ Schemas.Test = new SimpleSchema({
     },
     serviceId: {
         type: String,
-        label: "Service Id",
         index: 1
     },
-    runner: {
+    scriptId: {
         type: String
     },
     isPassing: {
@@ -104,6 +103,84 @@ Schemas.Test = new SimpleSchema({
 });
 
 Tests.attachSchema(Schemas.Test);
+
+
+/*
+ Scripts
+ */
+
+Schemas.Script = new SimpleSchema({
+    file: {
+        type: String
+    },
+    path: {
+        type: String
+    },
+    hash : {
+        type: String
+    },
+    runnerId : {
+        type: String
+    },
+    createdAt: {
+        type: Date,
+        autoValue: function() {
+            if (this.isInsert) {
+                return new Date;
+            } else if (this.isUpsert) {
+                return {$setOnInsert: new Date};
+            } else {
+                this.unset();
+            }
+        }
+    },
+    updatedAt: {
+        type: Date,
+        autoValue: function() {
+            return new Date;
+        }
+    }
+});
+
+Scripts.attachSchema(Schemas.Script);
+
+
+/*
+ Runners
+ */
+
+Schemas.Runner = new SimpleSchema({
+    title: {
+        type: String
+    },
+    slug: {
+        type: String
+    },
+    command: {
+        type: String
+    },
+    createdAt: {
+        type: Date,
+        autoValue: function() {
+            if (this.isInsert) {
+                return new Date;
+            } else if (this.isUpsert) {
+                return {$setOnInsert: new Date};
+            } else {
+                this.unset();
+            }
+        }
+    },
+    updatedAt: {
+        type: Date,
+        autoValue: function() {
+            return new Date;
+        }
+    }
+});
+
+Runners.attachSchema(Schemas.Runner);
+
 
 /*
  Services

@@ -46,7 +46,6 @@ TestController = RouteController.extend({
         return [
             Meteor.subscribe('test', this.params._id),
             Meteor.subscribe('testReports', this.params._id),
-            Meteor.subscribe('testFile', this.params._id)
         ];
     },
     data: function () {
@@ -54,7 +53,6 @@ TestController = RouteController.extend({
         return {
             test: Tests.findOne(this.params._id),
             reports: Reports.find({ testId: this.params._id }),
-            file: TestFiles.findOne({ testId: this.params._id }, { sort: { uploadedAt: -1 }})
         }
     },
     action: function () {

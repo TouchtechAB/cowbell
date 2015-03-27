@@ -1,15 +1,13 @@
-Meteor.publish("tests", function (limit) {
+Meteor.publish("tests", function () {
 
     if(!this.userId) return this.ready();
-    if(!limit) return this.ready();
 
     return Tests.find({ },
         {
-            limit: limit,
             fields: {
                 _id: 1,
                 title: 1,
-                runner: 1,
+                scriptId: 1,
                 lastRunAt: 1,
                 nextRunAt: 1,
                 interval: 1,
@@ -30,7 +28,7 @@ Meteor.publish("test", function (_id) {
             fields: {
                 _id: 1,
                 title: 1,
-                runner: 1,
+                scriptId: 1,
                 lastRunAt: 1,
                 nextRunAt: 1,
                 interval: 1,
@@ -40,14 +38,42 @@ Meteor.publish("test", function (_id) {
         });
 });
 
-Meteor.publish("services", function (limit) {
+Meteor.publish("runners", function () {
 
     //if(!this.userId) return this.ready();
-    if(!limit) return this.ready();
+
+    return Runners.find({ },
+        {
+            fields: {
+                _id: 1,
+                title: 1,
+                slug: 1,
+                command: 1
+            }
+        });
+});
+
+Meteor.publish("scripts", function () {
+
+    //if(!this.userId) return this.ready();
+
+    return Scripts.find({ },
+        {
+            fields: {
+                _id: 1,
+                file: 1,
+                path: 1,
+                runnerId: 1
+            }
+        });
+});
+
+Meteor.publish("services", function () {
+
+    //if(!this.userId) return this.ready();
 
     return Services.find({ },
         {
-            limit: limit,
             fields: {
                 _id: 1,
                 title: 1,
@@ -86,17 +112,6 @@ Meteor.publish("testReports", function (testId) {
     return Reports.find({ testId: testId },
         {
             sort: { createdAt: -1 }
-        });
-});
-
-Meteor.publish("testFile", function (testId) {
-    if(!this.userId || !testId) {
-        return this.ready();
-    }
-    return TestFiles.find({ testId: testId },
-        {
-            limit: 1,
-            sort: { uploadedAt: -1 }
         });
 });
 

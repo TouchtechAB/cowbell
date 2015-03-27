@@ -34,22 +34,6 @@ Reports.allow({
     }
 });
 
-TestFiles.allow({
-    insert: function (userId, doc) {
-        return canInsertFile(userId, doc)
-    },
-    update: function (userId, doc) {
-        return canUpdateFile(userId, doc)
-    },
-    remove: function (userId, doc) {
-        return canRemoveFile(userId, doc)
-    },
-    download: function (userId, doc) {
-        return canDownloadFile(userId, doc)
-    },
-    fetch: null
-});
-
 Meteor.users.allow({
     insert: function (userId, doc) {
         return isAdmin(userId);

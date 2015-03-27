@@ -45,7 +45,6 @@
         <div class="container">
         {{#if canUpdateTest test}}
             {{> testUpdateForm}}
-            {{> testFileUploadForm}}
         {{/if}}
         {{#if canRemoveTest test}}
             <button id="test-remove-button">Remove Test</button>
@@ -59,7 +58,7 @@
         <fieldset>
             {{> afQuickField name="title"}}
             {{> afQuickField name="serviceId" value=service._id type="hidden" label=false}}
-            {{> afQuickField name="runner" options=testRunnerOptions}}
+            {{> afQuickField name="scriptId" options=testScriptOptions}}
             {{> afQuickField name="interval" options=testIntervalOptions}}
             {{> afQuickField name="isCritical"}}
         </fieldset>
@@ -72,19 +71,10 @@
     {{#autoForm collection="Tests" id="testUpdateForm" type="update" doc=test}}
         <fieldset>
             {{> afQuickField name="title"}}
-            {{> afQuickField name="runner" options=testRunnerOptions}}
+            {{> afQuickField name="scriptId" options=testScriptOptions}}
             {{> afQuickField name="interval" options=testIntervalOptions}}
             {{> afQuickField name="isCritical"}}
         </fieldset>
         <button type="submit">Update test</button>
     {{/autoForm}}
-</template>
-
-<template name="testFileUploadForm">
-    <form class="fileUploadForm">
-        <button class="fileUploadButton">
-            Upload test file
-            <input type="file" class="fileInput upload" required/>
-        </button>
-    </form>
 </template>

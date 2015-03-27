@@ -1,3 +1,4 @@
+fs = Meteor.npmRequire('fs');
 
 Meteor.startup(function() {
 
@@ -6,8 +7,9 @@ Meteor.startup(function() {
         key: Meteor.settings.mandrill.key
     });
 
+    updateRunners();
+    updateScripts();
     ensureTests();
-    console.log(TestFilesNew);
 });
 
 function ensureTests() {
@@ -18,4 +20,53 @@ function ensureTests() {
     });
 
     Meteor.setTimeout(ensureTests, 10000);
+}
+
+function updateRunners() {
+
+    var runners = [
+        { title: "CasperJS", slug: "casperjs", command: "casperjs test" },
+        { title: "Mocha", slug: "mocha", command: "mocha" }
+    ];
+
+    runners.forEach(function(runner) {
+        Runners.upsert({ slug: runner.slug }, { $set: runner });
+    });
+
+    // TODO Sync back and remove runners from DB that are not in array
+    var runnerCount = Runners.find().count();
+    console.log("%s Runners updated", runnerCount);
+}
+
+function updateScripts() {
+
+    var hashFiles = Meteor.npmRequire('hash-files');
+    var runners = Runners.find();
+
+    runners.forEach(function(runner) {
+
+        try {
+            var dir = './assets/app/tests/' + runner.slug;
+            fs.readdirSync(dir).forEach(function(file) {
+
+                var path = dir + "/" + file;
+                var hash = hashFiles.sync({ files: [path] });
+
+                Scripts.upsert({ hash: hash }, { $set: {
+                    runnerId: runner._id,
+                    file: file,
+                    path: path,
+                    hash: hash
+                }});
+            });
+        }
+        catch(err) {
+            console.log(err);
+            console.log("Cannot update %s tests", runner.title);
+        }
+    });
+
+    // TODO Sync back and remove runners from DB that are not in array
+    var scriptCount = Scripts.find().count();
+    console.log("%s Scripts updated", scriptCount);
 }
