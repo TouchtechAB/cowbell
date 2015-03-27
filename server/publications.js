@@ -1,6 +1,6 @@
 Meteor.publish("tests", function () {
 
-    if(!this.userId) return this.ready();
+    //if(!this.userId) return this.ready();
 
     return Tests.find({ },
         {
@@ -19,7 +19,7 @@ Meteor.publish("tests", function () {
 
 Meteor.publish("test", function (_id) {
 
-    if(!this.userId) return this.ready();
+    //if(!this.userId) return this.ready();
     if(!_id) return this.ready();
 
     return Tests.find({ _id: _id },
@@ -99,7 +99,7 @@ Meteor.publish("service", function (_id) {
 });
 
 Meteor.publish("serviceTests", function (serviceId) {
-    if(!this.userId || !serviceId) {
+    if(!serviceId) {
         return this.ready();
     }
     return Tests.find({ serviceId: serviceId });

@@ -25,10 +25,11 @@
 <template name="service">
     <div class="service master-section section-primary">
         <div class="container mobile-padding">
-            <h1>{{service.title}}</h1>
+            <a href="{{pathFor 'home'}}">
+                <h1>{{service.title}}</h1>
+            </a>
             <h3>{{capitalize service.status}}</h3>
-        </div>
-        <div class="container">
+            <div class="spacer"></div>
             {{> testList}}
         </div>
         <div class="container">
