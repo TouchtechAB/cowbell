@@ -195,7 +195,8 @@ Schemas.Service = new SimpleSchema({
     status: {
         type: String,
         index: 1,
-        defaultValue: "normal"
+        defaultValue: "normal",
+        allowedValues: ["error", "warning", "normal"]
     },
     createdAt: {
         type: Date,
@@ -234,9 +235,12 @@ Schemas.Report = new SimpleSchema({
         label: "Test Id",
         index: 1
     },
-    status: {
-        type: String,
+    isPassing: {
+        type: Boolean,
         index: 1
+    },
+    output: {
+        type: String
     },
     createdAt: {
         type: Date,

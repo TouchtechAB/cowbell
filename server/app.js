@@ -57,13 +57,12 @@ function updateScripts() {
             else if(files.result && files.result.length) {
                 files.result.forEach(function(file) {
 
-                    var path = dir + "/" + file;
-                    var hash = hashFiles.sync({ files: [path] });
+                    var hash = hashFiles.sync({ files: [file] });
 
                     Scripts.upsert({ hash: hash }, { $set: {
                         runnerId: runner._id,
                         file: file,
-                        path: path,
+                        path: file,
                         hash: hash
                     }});
                 });
