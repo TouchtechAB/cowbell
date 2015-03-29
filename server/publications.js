@@ -33,7 +33,8 @@ Meteor.publish("test", function (_id) {
                 nextRunAt: 1,
                 interval: 1,
                 isPassing: 1,
-                isCritical: 1
+                isCritical: 1,
+                serviceId: 1
             }
         });
 });
@@ -114,7 +115,8 @@ Meteor.publish("serviceTests", function (serviceId) {
                 nextRunAt: 1,
                 interval: 1,
                 isPassing: 1,
-                isCritical: 1
+                isCritical: 1,
+                serviceId: 1
             }
         });
 });
