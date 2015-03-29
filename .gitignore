@@ -4,6 +4,9 @@
 .meteor/meteorite
 packages
 
+private/tests/casperjs/*
+private/tests/mocha/*
+
 .idea
 .DS_Store
 mup.json
