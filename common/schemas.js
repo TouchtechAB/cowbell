@@ -15,7 +15,8 @@ Schemas.Test = new SimpleSchema({
         index: 1
     },
     scriptId: {
-        type: String
+        type: String,
+        index: 1
     },
     isPassing: {
         type: Boolean,
@@ -114,13 +115,16 @@ Schemas.Script = new SimpleSchema({
         type: String
     },
     path: {
-        type: String
+        type: String,
+        index: 1
     },
     hash : {
-        type: String
+        type: String,
+        index: 1
     },
     runnerId : {
-        type: String
+        type: String,
+        index: 1
     },
     createdAt: {
         type: Date,
@@ -154,7 +158,8 @@ Schemas.Runner = new SimpleSchema({
         type: String
     },
     slug: {
-        type: String
+        type: String,
+        index: 1
     },
     command: {
         type: String
