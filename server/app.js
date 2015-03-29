@@ -59,7 +59,7 @@ function updateScripts() {
 
                     var hash = hashFiles.sync({ files: [file] });
 
-                    Scripts.upsert({ hash: hash }, { $set: {
+                    Scripts.upsert({ path: file }, { $set: {
                         runnerId: runner._id,
                         file: file,
                         path: file,
