@@ -6,6 +6,7 @@ Tracker.autorun(function() {
     Meteor.subscribe("services");
     Meteor.subscribe("runners");
     Meteor.subscribe("scripts");
+    Meteor.subscribe("reports", 10);
 });
 
 Meteor.startup(function() {
