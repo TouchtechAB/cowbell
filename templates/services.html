@@ -30,9 +30,9 @@
                     <h1>{{service.title}}</h1>
                 </a>
                 <h3>{{capitalize service.status}}</h3>
-                <div class="spacer"></div>
-                {{> testList}}
             </div>
+            <div class="spacer"></div>
+            {{> testList}}
             {{#if canUpdateService}}
                 {{> serviceUpdateForm}}
             {{/if}}
