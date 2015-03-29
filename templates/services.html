@@ -23,16 +23,16 @@
 </template>
 
 <template name="service">
-    <div class="service master-section section-primary">
-        <div class="container mobile-padding">
-            <a href="{{pathFor 'home'}}">
-                <h1>{{service.title}}</h1>
-            </a>
-            <h3>{{capitalize service.status}}</h3>
-            <div class="spacer"></div>
-            {{> testList}}
-        </div>
+    <div class="service section-primary">
         <div class="container">
+            <div class=" mobile-padding">
+                <a href="{{pathFor 'home'}}">
+                    <h1>{{service.title}}</h1>
+                </a>
+                <h3>{{capitalize service.status}}</h3>
+                <div class="spacer"></div>
+                {{> testList}}
+            </div>
             {{#if canUpdateService}}
                 {{> serviceUpdateForm}}
             {{/if}}
