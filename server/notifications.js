@@ -1,8 +1,8 @@
-sendNotification = function(subject, message, user) {
+sendNotification = function(subject, title, message, user) {
 
     var toEmail = user.emails[0].address;
-    var toName = user.profile.firstName;
-    var firstName = user.profile.firstName;
+    var firstName = user.profile && user.profile.firstName ? user.profile.firstName : null;
+    var toName = firstName ? firstName : null;
 
     Meteor.Mandrill.sendTemplate({
         "template_name": Meteor.settings.mandrill.template,
@@ -12,6 +12,10 @@ sendNotification = function(subject, message, user) {
                 {
                     "name": "firstName",
                     "content": firstName
+                },
+                {
+                    "name": "title",
+                    "content": title
                 },
                 {
                     "name": "message",

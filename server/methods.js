@@ -59,7 +59,6 @@ runTest = function(testId) {
     }
     catch(err) {
         console.log(err);
-        console.log("Could not execute test runner for [testId %s] [scriptId %s]", test._id, script._id);
     }
 
     return result;
