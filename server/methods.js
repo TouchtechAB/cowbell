@@ -55,6 +55,13 @@ runTest = function(testId) {
             isPassing: testRunner.result.isPassing
         }});
 
+        // Insert report
+        Reports.insert({
+            testId: test._id,
+            output: testRunner.result.output,
+            isPassing: testRunner.result.isPassing
+        });
+
         result = testRunner.result;
     }
     catch(err) {

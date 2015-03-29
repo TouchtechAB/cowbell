@@ -225,11 +225,6 @@ Services.attachSchema(Schemas.Service);
  */
 
 Schemas.Report = new SimpleSchema({
-    title: {
-        type: String,
-        label: "Title",
-        max: 160
-    },
     testId: {
         type: String,
         label: "Test Id",
