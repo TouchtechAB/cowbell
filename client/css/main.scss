@@ -43,60 +43,21 @@
   transform: translate(0, -50%);
 }
 
-html {
+html, body {
   padding: 0;
   margin: 0;
-}
-body {
-  padding: 0;
-  margin: 0;
-  background-color: #F3F3F3;
+  height: 100%;
+  width: 100%;
+  background-color: $darker-background-color;
 }
 .section {
   margin-top: 42px;
 }
 .container {
   max-width: 620px;
-  margin: 100px auto;
+  margin: 50px auto;
   padding: 0;
   box-sizing: border-box;
-}
-
-.fileUploadButton {
-  position: relative;
-  overflow: hidden;
-  margin: 0;
-}
-
-.fileCloseButton {
-  position: absolute !important;
-  overflow: hidden;
-  top: 10px;
-  right: 10px;
-  margin: 0;
-}
-
-.fileUploadButton input.upload {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
-  cursor: pointer;
-  opacity: 0;
-  filter: alpha(opacity=0);
-}
-
-.fileImageWrapper {
-  position: relative;
-}
-
-.fileUploadForm {
-  position: relative;
-  margin-top: 30px;
 }
 
 .hidden {

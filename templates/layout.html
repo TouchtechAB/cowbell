@@ -7,8 +7,16 @@
 <body></body>
 
 <template name="layout">
-    {{> topBar }}
-    {{> yield }}
-    {{> footer }}
+    <nav id="menu">
+        <header>
+        </header>
+    </nav>
+    <main id="panel">
+        <a href="#" id="slideout-toggle-button">
+            <div class="button-content">☰</div>
+        </a>
+        {{> yield }}
+        {{> footer }}
+    </main>
 </template>
 
