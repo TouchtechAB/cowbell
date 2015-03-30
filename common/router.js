@@ -54,7 +54,7 @@ TestController = RouteController.extend({
 
         return {
             test: Tests.findOne(this.params._id),
-            reports: Reports.find({ testId: this.params._id, isPassing: false }, { sort: { createdAt: -1 }})
+            reports: Reports.find({ testId: this.params._id, isPassing: false }, { sort: { createdAt: -1 }, limit: 10 })
         }
     },
     action: function () {
