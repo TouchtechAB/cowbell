@@ -17,11 +17,13 @@ bengott:avatar
 fourseven:scss
 matb33:collection-hooks
 anti:modals
-msavin:mongol
 mrt:moment
 cfs:standard-packages
 cfs:filesystem
 meteorhacks:npm
 meteorhacks:async
 meteorhacks:aggregate
+meteorhacks:subs-manager
+
+
 npm-container

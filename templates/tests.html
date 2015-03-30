@@ -40,15 +40,16 @@
             <div>next run: {{test.nextRunAt}}</div>
             <div>interval: {{test.interval}}</div>
             <div>{{file.name}}</div>
+            <div class="spacer"></div>
             <button id="test-run-button">Run test</button>
-        </div>
-        <div class="container">
-        {{#if canUpdateTest test}}
-            {{> testUpdateForm}}
-        {{/if}}
-        {{#if canRemoveTest test}}
-            <button id="test-remove-button">Remove Test</button>
-        {{/if}}
+            <div class="spacer"></div>
+            {{> reportList }}
+            {{#if canUpdateTest test}}
+                {{> testUpdateForm}}
+            {{/if}}
+            {{#if canRemoveTest test}}
+                <button id="test-remove-button">Remove Test</button>
+            {{/if}}
         </div>
     </div>
 </template>

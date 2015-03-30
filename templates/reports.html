@@ -11,9 +11,10 @@
         <a href="{{pathFor 'report'}}">
             <div class="report-list-entry">
                 <div class="indicators">
-                    <span class="indicator {{status}}"></span>
+                    <span class="indicator {{stringify isPassing}}"></span>
                 </div>
-                <div class="title">{{title}}</div>
+                <div class="title">Report</div>
+                <div class="info mobile-hidden">{{ createdAt }}</div>
             </div>
         </a>
     </li>
@@ -22,8 +23,9 @@
 <template name="report">
     <div class="report master-section section-primary">
         <div class="container mobile-padding">
-            <h1>{{report.title}}</h1>
-            <h3>{{capitalize report.status}}</h3>
+            <h1>Report</h1>
+            <h3>{{stringify report.isPassing}}</h3>
+            {{{ breakLines report.output }}}
         </div>
     </div>
 </template>
