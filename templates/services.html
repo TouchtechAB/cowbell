@@ -31,8 +31,11 @@
                 </a>
                 <h3>{{capitalize service.status}}</h3>
             </div>
+            {{#if tests}}
+                <div class="spacer"></div>
+                {{> testList}}
+            {{/if}}
             <div class="spacer"></div>
-            {{> testList}}
             {{#if canUpdateService}}
                 {{> serviceUpdateForm}}
             {{/if}}

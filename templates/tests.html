@@ -17,8 +17,8 @@
                     <span class="indicator {{stringify isPassing}}"></span>
                 </div>
                 <div class="title">{{title}}</div>
-                <div class="info mobile-hidden">{{lastRunAt}}</div>
-                <div class="info mobile-hidden">{{interval}}</div>
+                <div class="info mobile-hidden">{{niceTime lastRunAt}}</div>
+                <div class="info mobile-hidden">{{niceDuration interval}}</div>
             </div>
         </a>
     </li>
@@ -36,14 +36,17 @@
                     Failing
                 {{/if}}
             </div>
-            <div>last run: {{test.lastRunAt}}</div>
-            <div>next run: {{test.nextRunAt}}</div>
+            <div>last run: {{niceTime test.lastRunAt}}</div>
+            <div>next run: {{niceTime test.nextRunAt}}</div>
             <div>interval: {{test.interval}}</div>
             <div>{{file.name}}</div>
             <div class="spacer"></div>
             <button id="test-run-button">Run test</button>
+            {{#if reports}}
+                <div class="spacer"></div>
+                {{> reportList }}
+            {{/if}}
             <div class="spacer"></div>
-            {{> reportList }}
             {{#if canUpdateTest test}}
                 {{> testUpdateForm}}
             {{/if}}
