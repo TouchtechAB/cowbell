@@ -15,3 +15,23 @@ Meteor.publish("report", function (_id) {
             }
         });
 });
+
+Meteor.publish("reports", function (testId, isPassing, limit) {
+
+    if(!this.userId || !testId || !limit) {
+        return this.ready();
+    }
+
+    return Reports.find({ testId: testId, isPassing: isPassing },
+        {
+            limit: limit,
+            sort: { createdAt: -1 },
+            fields: {
+                _id: 1,
+                output: 1,
+                isPassing: 1,
+                testId: 1,
+                createdAt: 1
+            }
+        });
+});
