@@ -18,7 +18,7 @@ Meteor.publish("report", function (_id) {
 
 Meteor.publish("reports", function (testId, isPassing, limit) {
 
-    if(!this.userId || !testId || !limit) {
+    if(!testId || !limit) {
         return this.ready();
     }
 
