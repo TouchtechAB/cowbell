@@ -38,23 +38,3 @@ Meteor.publish("test", function (_id) {
             }
         });
 });
-
-Meteor.publish("testReports", function (testId, limit) {
-
-    if(!this.userId || !testId || !limit) {
-        return this.ready();
-    }
-
-    return Reports.find({ testId: testId },
-        {
-            limit: limit,
-            sort: { createdAt: -1 },
-            fields: {
-                _id: 1,
-                output: 1,
-                isPassing: 1,
-                testId: 1,
-                createdAt: 1
-            }
-        });
-});

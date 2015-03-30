@@ -47,7 +47,7 @@ TestController = RouteController.extend({
     waitOn: function () {
         return [
             subsManager.subscribe('test', this.params._id),
-            subsManager.subscribe('testReports', this.params._id, 10)
+            subsManager.subscribe('reports', this.params._id, false, 10)
         ];
     },
     data: function () {
