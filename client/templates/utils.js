@@ -7,10 +7,5 @@ Template.registerHelper('capitalize', function(text) {
 });
 
 Template.registerHelper('stringify', function(value) {
-
-    if(value === undefined){
-        return;
-    }
-
-    return value.toString();
+    return stringify(value);
 });
