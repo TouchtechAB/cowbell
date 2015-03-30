@@ -47,14 +47,34 @@ TestController = RouteController.extend({
     waitOn: function () {
         return [
             subsManager.subscribe('test', this.params._id),
-            subsManager.subscribe('testReports', this.params._id),
+            subsManager.subscribe('testReports', this.params._id, 10)
         ];
     },
     data: function () {
 
         return {
             test: Tests.findOne(this.params._id),
-            reports: Reports.find({ testId: this.params._id })
+            reports: Reports.find({ testId: this.params._id, isPassing: false }, { sort: { createdAt: -1 }})
+        }
+    },
+    action: function () {
+        this.render();
+    }
+});
+
+Router.route('/report/:_id', { name: 'report' });
+ReportController = RouteController.extend({
+
+    template: 'report',
+    waitOn: function () {
+        return [
+            subsManager.subscribe('report', this.params._id),
+        ];
+    },
+    data: function () {
+
+        return {
+            report: Reports.findOne(this.params._id)
         }
     },
     action: function () {
