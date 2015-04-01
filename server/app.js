@@ -1,8 +1,8 @@
 Meteor.startup(function() {
 
     Meteor.Mandrill.config({
-        username: Meteor.settings.mandrill.username,
-        key: Meteor.settings.mandrill.key
+        username: Meteor.settings.notifications.mandrill.username,
+        key: Meteor.settings.notifications.mandrill.key
     });
 
     updateRunners();

@@ -24,6 +24,7 @@ meteorhacks:npm
 meteorhacks:async
 meteorhacks:aggregate
 meteorhacks:subs-manager
+georgediab:slack-notify
 
 
 npm-container
