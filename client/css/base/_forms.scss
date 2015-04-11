@@ -1,3 +1,6 @@
+@import "../bourbon/bourbon";
+@import "variables";
+
 fieldset {
   background: lighten($base-border-color, 10);
   border: $base-border;

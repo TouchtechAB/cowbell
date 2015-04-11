@@ -1,3 +1,6 @@
+@import "../bourbon/bourbon";
+@import "variables";
+
 @mixin diagonal-stripe-pattern($color-1, $color-2, $ratio, $angle) {
   $ratio: percentage($ratio / 2);
   @include linear-gradient($angle,

@@ -1,3 +1,6 @@
+@import "../../bourbon/bourbon";
+@import "../variables";
+
 %button {
   -webkit-font-smoothing: antialiased;
   background-color: $base-button-color;
