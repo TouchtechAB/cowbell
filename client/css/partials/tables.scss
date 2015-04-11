@@ -28,7 +28,7 @@
     th {
       background-color: $table-header-color;
       padding: $table-padding;
-      border-bottom: 0px;
+      border-bottom: 0;
     }
   }
 
@@ -38,7 +38,7 @@
     td {
       padding: $table-padding;
       border-top: 1px solid $table-border-color;
-      border-bottom: 0px;
+      border-bottom: 0;
 
       button {
         padding: .5em 1em .6em;

@@ -3,6 +3,7 @@
 .meteor/local
 .meteor/meteorite
 packages
+node_modules
 
 private/tests/casperjs/*
 private/tests/mocha/*

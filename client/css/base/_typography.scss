@@ -1,3 +1,6 @@
+@import "../bourbon/bourbon";
+@import "variables";
+
 body {
   -webkit-font-smoothing: antialiased;
   background-color: $base-background-color;
@@ -75,15 +78,13 @@ a {
 }
 
 hr {
-  border-bottom: $base-border;
-  border-left: none;
-  border-right: none;
-  border-top: none;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
   margin: $base-spacing 0;
 }
 
-img,
-picture {
+img {
   margin: 0;
   max-width: 100%;
 }

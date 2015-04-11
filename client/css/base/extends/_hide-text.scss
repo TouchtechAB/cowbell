@@ -1,3 +1,6 @@
+@import "../../bourbon/bourbon";
+@import "../variables";
+
 %hide-text {
   @include hide-text;
 }

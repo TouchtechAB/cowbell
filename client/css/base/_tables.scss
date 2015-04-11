@@ -1,3 +1,6 @@
+@import "../bourbon/bourbon";
+@import "variables";
+
 table {
   border-collapse: collapse;
   margin: ($base-spacing / 2) 0;

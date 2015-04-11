@@ -1,3 +1,6 @@
+@import "../../bourbon/bourbon";
+@import "../variables";
+
 @mixin flash($color) {
   background: $color;
   color: darken($color, 60);
