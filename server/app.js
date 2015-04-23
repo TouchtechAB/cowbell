@@ -23,11 +23,7 @@ function ensureTests () {
 function updateRunners () {
 
   var runners = [
-<<<<<<< HEAD
-    { title: "CasperJS", slug: "casperjs", command: "casperjs test" },
-=======
     { title: "CasperJS", slug: "casperjs", command: "casperjs test --ssl-protocol=tlsv1" },
->>>>>>> ae4698844be1a6a7729e427c28d1c67f1da95054
     { title: "Mocha", slug: "mocha", command: "mocha" }
   ];
 
