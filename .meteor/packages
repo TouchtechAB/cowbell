@@ -6,9 +6,11 @@
 
 meteor-platform
 accounts-password
+accounts-ui
 underscore
 http
 iron:router
+npm-container
 wylio:mandrill
 aldeed:autoform
 aldeed:collection2
@@ -24,7 +26,12 @@ meteorhacks:npm
 meteorhacks:async
 meteorhacks:aggregate
 meteorhacks:subs-manager
+<<<<<<< HEAD
 georgediab:slack-notify
 
 
 npm-container
+=======
+mike:mocha
+wiseguyeh:accounts-azure-active-directory
+>>>>>>> ae4698844be1a6a7729e427c28d1c67f1da95054
