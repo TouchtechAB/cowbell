@@ -6,9 +6,11 @@
 
 meteor-platform
 accounts-password
+accounts-ui
 underscore
 http
 iron:router
+npm-container
 wylio:mandrill
 aldeed:autoform
 aldeed:collection2
@@ -24,5 +26,5 @@ meteorhacks:npm
 meteorhacks:async
 meteorhacks:aggregate
 meteorhacks:subs-manager
-
-npm-container
+mike:mocha
+wiseguyeh:accounts-azure-active-directory
